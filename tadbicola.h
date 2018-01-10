@@ -86,13 +86,14 @@ void Bicola<T>::popB()
 {
     assert(!vacia());
     nodo *p = inicio;               //COMPROBACIONES DE SI ESTA VACIA
-    while (p->sig != fin)          // ...||p!=fin)
+    if(p==fin) {inicio=0;fin->elto=0;}
+    else
+    while (p->sig != fin )          // ...||p!=fin)
     {
         p = p->sig;
     }
-    fin =p;
-    fin->sig=p->sig;
-    delete p->sig;
+    p->sig=fin->sig;
+    fin=p;
 }
 
 template <typename T>
